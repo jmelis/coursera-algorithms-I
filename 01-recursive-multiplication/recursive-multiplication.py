@@ -6,6 +6,8 @@ from random import randint
 from math import ceil
 
 def multiply(a,b):
+    """Recursive multiplication of integer numbers"""
+
     a_len = len(str(a))
     b_len = len(str(b))
 
@@ -29,27 +31,35 @@ def multiply(a,b):
 
     return (10**(2*m_h)*a0_b0 + 10**m_h*(a0_b1+a1_b0) + a1_b1)
 
-args = len(sys.argv)
+if __name__ == '__main__':
+    """Tests the recursive multiplication above
 
-if args == 2:
-    n = m = int(sys.argv[1])
-elif args == 3:
-    n = int(sys.argv[1])
-    m = int(sys.argv[2])
-else:
-    n = m = 3
+    This script acceps either 1 or 2 integer parameters which determine the
+    size of the random numbers generated to test the algorithm. The default is 3
 
-a = randint(10**(n-1), 10**n-1)
-b = randint(10**(m-1), 10**m-1)
+    """
 
-print "a =",a
-print "b =",b
-print "m =",a*b
+    args = len(sys.argv)
 
-recursive_m = multiply(a,b)
+    if args == 2:
+        n = m = int(sys.argv[1])
+    elif args == 3:
+        n = int(sys.argv[1])
+        m = int(sys.argv[2])
+    else:
+        n = m = 3
 
-if a*b == recursive_m:
-    print "correct"
-else:
-    print "wrong(%i)"
-    print "r =",recursive_m
+    a = randint(10**(n-1), 10**n-1)
+    b = randint(10**(m-1), 10**m-1)
+
+    print "a =",a
+    print "b =",b
+    print "m =",a*b
+
+    recursive_m = multiply(a,b)
+
+    if a*b == recursive_m:
+        print "correct"
+    else:
+        print "wrong"
+        print "r =",recursive_m
